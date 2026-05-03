@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{%block title %}
+Book_List
+{%endblock%}
+ {%block content%}
+    {{books}}
+
+    {%for item in book%}
+        {{item}} <br>
+    {%endfor%}
+{%endblock%}
