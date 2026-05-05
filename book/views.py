@@ -42,3 +42,14 @@ def getbookbyname(request,name):
     # objresponse['content-type']='text/plain'
     return  objresponse
 
+def Hardbookdelete(request,id):
+    #check if id ok
+    if (Book.objects.filter(pk=id) ):
+        #delete
+        Book.objects.filter(id=id).delete()
+        #redirect book list
+        return redirect('Booklist')
+    # else:
+    else:
+        return render(request,'book/list.html',context={'error':'book not found'})
+    #     return error
