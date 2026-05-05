@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http.response import HttpResponse,HttpResponseRedirect
+from pip._internal import req
 
 from .models import *
 # Create your views here.
@@ -11,7 +12,11 @@ def listbook(request):
 
     return render(request,'book/list.html',context)
 def getbookbyid(request,id):
-    return HttpResponse(f'<h1>book detaild nu,ber {id}</h1>')
+    # return HttpResponse(f'<h1>book detaild nu,ber {id}</h1>')
+    #get book
+    context={'book':Book.objects.get(id=id)}
+    #render
+    return render(request,'book/bookdetails.html',context)
 def bookupdate(req,id):
     return HttpResponse(f'<h1>book update for id:{id}</h1>')
 def bookdelete(req,id):
