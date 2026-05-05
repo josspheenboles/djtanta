@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{%block title %}
+Book_ New
+{%endblock%}
+ {%block content%}
+    <form method="post" enctype="multipart/form-data">
+<!--        random text & expiretime-->
+        {%csrftoken%}
+        <input type="text" name="title" maxlength="100">
+        <input type="text" multiple name="decrption" >
+        <input type="number" name="price" >
+        <input type="file" name="image">
+
+
+        <input type="submit" value ='add'>
+    </form>
+
+{%endblock%}

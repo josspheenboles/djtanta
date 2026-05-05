@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
-
+from .models import *
 # Create your views here.
 #view is function---->httprequest as param & return object of httprespone
 def listbook(request):
     # return HttpResponse('<h1>Book List</h1>')
-    books={'1':{        'id':1,        'name':'book1'    },
-           '2':{        'id':2,        'name':'book2'    }}
-    book=[1,'python bible','desc']
-    context={'title':'tanta demo','books':books,'book':book}
+
+    context={'title':'tanta demo','books':Book.objects.all()}
 
     return render(request,'book/list.html',context)
 def getbookbyid(request,id):
