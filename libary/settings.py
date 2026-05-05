@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
     #install app
     'catagory.apps.CatagoryConfig',
     'book.apps.BookConfig',
@@ -77,8 +79,13 @@ WSGI_APPLICATION = 'libary.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'demo',
+        'HOST':'localhost',
+        'USER':'postgres',
+        'PASSWORD':'123',
+        'PORT':5432
+
     }
 }
 
