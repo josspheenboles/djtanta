@@ -5,12 +5,18 @@ Book_ New
  {%block content%}
     <form method="post" enctype="multipart/form-data">
 <!--        random text & expiretime-->
-        {%csrftoken%}
+        {%csrf_token%}
+        <label>Title</label>
         <input type="text" name="title" maxlength="100">
+        </br>
+        <label>Book Desct</label>
         <input type="text" multiple name="decrption" >
+        </br>
+        <label>Price:</label>
         <input type="number" name="price" >
+        </br>
         <input type="file" name="image">
-
+        </br>
 
         <input type="submit" value ='add'>
     </form>

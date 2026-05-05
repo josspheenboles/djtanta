@@ -9,7 +9,7 @@
         {%endblock%}
     </title>
      <link rel="stylesheet" href="{%static 'css/style.css' %}">
-    <script src="{%static 'js/index.js'%}"></script>
+<!--    <script src="{%static 'js/index.js'%}"></script>-->
 </head>
 <body>
 <table width="100%" hieght="100%" border="1px solid">
@@ -22,6 +22,12 @@
      <tr>
         <td colspan="2">
             <h1>Menu</h1>
+            <a href="{%url 'Book_add'%}">New Book</a>
+            </br>
+            <a href="{%url 'Booklist'%}">Books</a>
+            </br>
+            <a href="/admin/">Catagory</a>
+            </br>
         </td>
          <td colspan="7">
             <h1>content</h1>

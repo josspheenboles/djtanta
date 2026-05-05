@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.shortcuts import render,redirect
+from django.http.response import HttpResponse,HttpResponseRedirect
+
 from .models import *
 # Create your views here.
 #view is function---->httprequest as param & return object of httprespone
@@ -16,7 +17,16 @@ def bookupdate(req,id):
 def bookdelete(req,id):
     return HttpResponse(f'<h1>book Delete for id:{id}</h1>')
 def newbook(request):
-    return HttpResponse(f'<h1>book add</h1>')
+    # return HttpResponse(f'<h1>book add</h1>')
+    if request.method == 'POST':
+        Book.objects.create(
+            title=request.POST['title'],
+            description=request.POST['decrption'],
+            price=request.POST['price'],
+        )
+        # return HttpResponseRedirect('/Book/')
+        return redirect ('Booklist')
+    return render (request,'book/new.html')
 
 def getbookbyname(request,name):
     print(request.get_host())
