@@ -19,6 +19,7 @@ def bookdelete(req,id):
 def newbook(request):
     # return HttpResponse(f'<h1>book add</h1>')
     if request.method == 'POST':
+
         Book.objects.create(
             title=request.POST['title'],
             description=request.POST['decrption'],
