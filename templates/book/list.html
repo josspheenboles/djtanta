@@ -13,6 +13,7 @@ Book_List
         <th>Description</th>
         <th>Price</th>
         <th>Image</th>
+        <th>Catagory</th>
         <th>Actions</th>
     </tr>
     {%for book in books%}
@@ -21,6 +22,7 @@ Book_List
             <td>{{book.title}}</td>
             <td>{{book.description}}</td>
             <td>{{book.price}}</td>
+            <td>{{book.Catagory}}</td>
             <td>
                 {% if book.image %}
                 <img src="{{book.image.url}}" width="30%" height="30%" alt="{{book.title}}">
