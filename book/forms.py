@@ -1,1 +1,7 @@
 from django import forms
+class BookForm(forms.Form):
+    title =forms.CharField(max_length=100,required=True)
+    description = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control'}))
+    price = forms.DecimalField(max_digits=10,decimal_places=2)
+    image = forms.ImageField()
+    # Catagory=forms.ChoiceField(choices=)
