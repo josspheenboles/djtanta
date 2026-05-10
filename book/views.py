@@ -33,6 +33,7 @@ def newbook(request):
         )
         # return HttpResponseRedirect('/Book/')
         return redirect ('Booklist')
+    context={'catagories':Catagory.objects.all()}
     return render (request,'book/new.html')
 
 def getbookbyname(request,name):
