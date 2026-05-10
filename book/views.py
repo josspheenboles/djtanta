@@ -30,7 +30,8 @@ def newbook(request):
             title=request.POST['title'],
             description=request.POST['decrption'],
             price=request.POST['price'],
-            image=request.FILES.get("image")
+            image=request.FILES.get("image"),
+            catagory=Catagory.objects.get(request.POST['catagory'])
         )
         # return HttpResponseRedirect('/Book/')
         return redirect ('Booklist')
