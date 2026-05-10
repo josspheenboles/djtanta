@@ -22,6 +22,7 @@ def bookupdate(req,id):
 def bookdelete(req,id):
     return HttpResponse(f'<h1>book Delete for id:{id}</h1>')
 def newbook(request):
+    context = {'catagories': Catagory.objects.all()}
     # return HttpResponse(f'<h1>book add</h1>')
     if request.method == 'POST':
 
@@ -33,8 +34,8 @@ def newbook(request):
         )
         # return HttpResponseRedirect('/Book/')
         return redirect ('Booklist')
-    context={'catagories':Catagory.objects.all()}
-    return render (request,'book/new.html')
+
+    return render (request,'book/new.html',context)
 
 def getbookbyname(request,name):
     print(request.get_host())
