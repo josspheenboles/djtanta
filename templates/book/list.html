@@ -22,7 +22,11 @@ Book_List
             <td>{{book.description}}</td>
             <td>{{book.price}}</td>
             <td>
-                <img src="{{book.image}}" width="30%" height="30%" alt="{{book.title}}">
+                {% if book.image %}
+                <img src="{{book.image.url}}" width="30%" height="30%" alt="{{book.title}}">
+                {% else %}
+                <p>No image uploaded.</p>
+            {% endif %}
             </td>
             <td>
                 <a href="{%url 'Book_get' book.id %}">details</a>
