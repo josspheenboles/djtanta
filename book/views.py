@@ -26,14 +26,16 @@ def newbook(request):
     context = {'catagories': Catagory.objects.all(),'form':BookForm()}
     # return HttpResponse(f'<h1>book add</h1>')
     if request.method == 'POST':
-
-        Book.objects.create(
-            title=request.POST['title'],
-            description=request.POST['decrption'],
-            price=request.POST['price'],
-            image=request.FILES.get("image"),
-            Catagory=Catagory.objects.get(pk=request.POST['catagory'])
-        )
+        form=BookForm(data=request.POST)
+        if(form.is_valid()):
+            form.save()
+            # Book.objects.create(
+            #     title=request.POST['title'],
+            #     description=request.POST['decrption'],
+            #     price=request.POST['price'],
+            #     image=request.FILES.get("image"),
+            #     Catagory=Catagory.objects.get(pk=request.POST['catagory'])
+            # )
         # return HttpResponseRedirect('/Book/')
         return redirect ('Booklist')
 
