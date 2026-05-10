@@ -6,22 +6,23 @@ Book_ New
     <form method="post" enctype="multipart/form-data">
 <!--        random text & expiretime-->
         {%csrf_token%}
-        <label>Title</label>
-        <input type="text" name="title" maxlength="100">
-        </br>
-        <label>Book Desct</label>
-        <input type="text" multiple name="decrption" >
-        </br>
-        <label>Price:</label>
-        <input type="number" name="price" >
-        </br>
-        <input type="file" name="image">
-        </br>
-            <select name="catagory">
-                    {%for cat in catagories%}
-                        <option value="{{cat.id}}">{{cat.name}}</option>
-                    {%endfor%}
-            </select>
+<!--        <label>Title</label>-->
+<!--        <input type="text" name="title" maxlength="100">-->
+<!--        </br>-->
+<!--        <label>Book Desct</label>-->
+<!--        <input type="text" multiple name="decrption" >-->
+<!--        </br>-->
+<!--        <label>Price:</label>-->
+<!--        <input type="number" name="price" >-->
+<!--        </br>-->
+<!--        <input type="file" name="image">-->
+<!--        </br>-->
+<!--            <select name="catagory">-->
+<!--                    {%for cat in catagories%}-->
+<!--                        <option value="{{cat.id}}">{{cat.name}}</option>-->
+<!--                    {%endfor%}-->
+<!--            </select>-->
+    {{form.as_p}}
         </br>
 
         <input type="submit" value ='add'>

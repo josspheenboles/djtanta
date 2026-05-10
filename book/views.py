@@ -3,6 +3,7 @@ from django.http.response import HttpResponse,HttpResponseRedirect
 from pip._internal import req
 
 from .models import *
+from .forms import *
 # Create your views here.
 #view is function---->httprequest as param & return object of httprespone
 def listbook(request):
@@ -22,7 +23,7 @@ def bookupdate(req,id):
 def bookdelete(req,id):
     return HttpResponse(f'<h1>book Delete for id:{id}</h1>')
 def newbook(request):
-    context = {'catagories': Catagory.objects.all()}
+    context = {'catagories': Catagory.objects.all(),'form':BookForm()}
     # return HttpResponse(f'<h1>book add</h1>')
     if request.method == 'POST':
 
