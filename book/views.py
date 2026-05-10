@@ -23,10 +23,10 @@ def bookupdate(req,id):
 def bookdelete(req,id):
     return HttpResponse(f'<h1>book Delete for id:{id}</h1>')
 def newbook(request):
-    context = {'catagories': Catagory.objects.all(),'form':BookForm()}
+    context = {'catagories': Catagory.objects.all(),'form':BookFormModel()}
     # return HttpResponse(f'<h1>book add</h1>')
     if request.method == 'POST':
-        form=BookForm(data=request.POST)
+        form=BookFormModel(data=request.POST,files=request.FILES)
         if(form.is_valid()):
             form.save()
             # Book.objects.create(
