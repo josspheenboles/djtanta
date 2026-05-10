@@ -1,3 +1,4 @@
+
 from django.db import models
 from catagory.models import Catagory
 # Create your models here.
