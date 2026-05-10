@@ -8,7 +8,8 @@ class Book(models.Model):
     price=models.DecimalField(decimal_places=2,max_digits=10)
     create_date=models.DateField(auto_now_add=True,verbose_name='Insert Date')#during insert get date
     update_date=models.DateTimeField(auto_now=True,verbose_name='Update Date')
-    image=models.ImageField(blank=True,null=True)
+    image=models.ImageField(upload_to='books_cover',blank=True,null=True)
+
 
 
 
