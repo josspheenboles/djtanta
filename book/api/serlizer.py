@@ -25,3 +25,10 @@ class BookSerlizer(serializers.Serializer):
     #private logic to insert
     def create(self,validated_data):
         return Book.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        # Update the instance fields
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
