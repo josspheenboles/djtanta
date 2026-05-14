@@ -3,6 +3,7 @@ from urllib import request
 from django.contrib.postgres import serializers
 from rest_framework import serializers
 from catagory.models import *
+from book.models import *
 
 class CatgorySerlixer(serializers.ModelSerializer):
     class Meta:
@@ -22,5 +23,5 @@ class BookSerlizer(serializers.Serializer):
     is_active = serializers.BooleanField(default=True)
 
     #private logic to insert
-    # def create(self,validated_data):
-    #     pass
+    def create(self,validated_data):
+        return Book.objects.create(**validated_data)
