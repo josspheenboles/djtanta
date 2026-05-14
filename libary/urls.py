@@ -20,12 +20,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from  django.contrib.auth.views import LogoutView,LoginView
 from accounts.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Book/',include('book.urls')),
     path('Login/',LoginView.as_view(template_name='login.html'),name='login'),
     path('Logout/',LogoutView.as_view(),name='logout'),
     path('Register/',UserRes.as_view(),name='register'),
+
+
 
 ]
 if settings.DEBUG:

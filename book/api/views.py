@@ -12,6 +12,7 @@ from .serlizer import *
 from rest_framework import viewsets
 
 class Bookviewset(viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
     def list(self,request):
         queryset=Book.objects.select_related('Catagory').all()
         serializer=BookSerlizer(queryset,many=True)

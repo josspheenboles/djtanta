@@ -2,3 +2,32 @@ install  drf
 pip install djangorestframework
 publish drf
 rest_framework
+
+install jwt
+pip install djangorestframework-simplejwt
+in settings.py
+from datetime import timedelta
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+URL Implementation (urls.py)
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+# Login: Returns Access and Refresh tokens
+path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+
+# Refresh: Returns a new Access token using the Refresh token
+path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
