@@ -1,13 +1,61 @@
 from django import views
+from django.db.models import query
 from django.http import JsonResponse,HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
 from  rest_framework.decorators import api_view,permission_classes
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.generics import UpdateAPIView
+from rest_framework.generics import UpdateAPIView, get_object_or_404
 from book.models import *
 from .serlizer import *
+from rest_framework import viewsets
+
+class Bookviewset(viewsets.ViewSet):
+    def list(self,request):
+        queryset=Book.objects.select_related('Catagory').all()
+        serializer=BookSerlizer(queryset,many=True)
+        return Response(serializer.data,status=status.HTTP_200_OK)
+    def create(self,request):
+        serlizer=BookSerlizer(data=request.data)
+        if serlizer.is_valid():
+            serlizer.save()
+            return Response(data=serlizer.data,status=status.HTTP_201_CREATED)
+        return  Response(serlizer.errors,status=status.HTTP_400_BAD_REQUEST)
+    def retrieve(self,request,pk):
+        queryset=Book.objects.select_related('Catagory').all()
+        book=get_object_or_404(queryset,pk=pk)
+        bookser=BookSerlizer(book)
+        return Response(data=bookser.data,status=status.HTTP_200_OK)
+    def update(self, request, pk):
+        book=get_object_or_404(Book,pk=pk)
+        serializer=BookSerlizer(instance=book,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    def partial_update(self,request,pk):
+        book = get_object_or_404(Book, pk=pk)
+        serializer = BookSerlizer(instance=book, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def destory(self,request,pk):
+        book = get_object_or_404(Book, pk=pk)
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+
+
+
+
+
 
 class BookUpdate(UpdateAPIView):
     queryset = Book.objects.filter(is_active=True)
