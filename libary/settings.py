@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     #install app
     'catagory.apps.CatagoryConfig',
     'book.apps.BookConfig',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

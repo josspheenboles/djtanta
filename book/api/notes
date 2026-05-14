@@ -1,0 +1,4 @@
+install  drf
+pip install djangorestframework
+publish drf
+rest_framework
