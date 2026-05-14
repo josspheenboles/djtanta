@@ -1,7 +1,7 @@
 from django.urls import path,include
 from book.views import *
 urlpatterns = [
-    # path('API/',include('book.api.urls') ),
+    path('API/',include('book.api.urls') ),
 
     path('', BookList.as_view(), name='Booklist'),
     path('<int:id>/', getbookbyid, name='Book_get'),
