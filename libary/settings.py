@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'catagory.apps.CatagoryConfig',
     'book.apps.BookConfig',
     'accounts.apps.AccountsConfig',
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
