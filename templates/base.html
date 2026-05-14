@@ -21,7 +21,21 @@
     </tr>
      <tr>
         <td colspan="2">
+
+<!--            <h1>{{request.session.info}}</h1>-->
             <h1>Menu</h1>
+            {%if user.is_authenticated%}
+            <h2>Welcom {{user.username}}</h2>
+            <a href="{%url 'logout'%}">Logout</a>
+            </br>
+            {%else%}
+            <a href="{%url 'login'%}">Login</a>
+
+            </br>
+            <a href="{%url 'register'%}">Regsiter</a>
+            </br>
+            {%endif%}
+
             <a href="{%url 'Book_add'%}">New Book</a>
             </br>
             <a href="{%url 'Booklist'%}">Books</a>

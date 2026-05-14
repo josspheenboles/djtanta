@@ -6,6 +6,7 @@ Book_List
 <div style="color : red">
     {{error }}
 </div>
+
 <table border="1px solid" width="100%" height="100%">
     <tr>
         <th>ID</th>
@@ -32,8 +33,8 @@ Book_List
             </td>
             <td>
                 <a href="{%url 'Book_get' book.id %}">details</a>
-                <a href>update</a>
-                <a href="">softdelet-update query status</a>
+                <a href="{%url 'Book_update' book.id%}">update</a>
+                <a href="{%url 'sBook_delete' book.id%}">softdelet-update query status</a>
                 <a href="{%url 'HBook_delete' book.id %}">harddelet -delete from db</a>
             </td>
 

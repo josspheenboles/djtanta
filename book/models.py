@@ -11,6 +11,7 @@ class Book(models.Model):
     update_date=models.DateTimeField(auto_now=True,verbose_name='Update Date')
     image=models.ImageField(upload_to='books_cover',blank=True,null=True)
     Catagory = models.ForeignKey(Catagory, on_delete=models.CASCADE)
+    is_active=models.BooleanField(default=True)
 
 
 

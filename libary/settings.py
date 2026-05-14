@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 
+from django.conf.global_settings import LOGIN_REDIRECT_URL
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     #install app
     'catagory.apps.CatagoryConfig',
     'book.apps.BookConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -80,12 +83,12 @@ WSGI_APPLICATION = 'libary.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'demo',
-        'HOST':'localhost',
-        'USER':'postgres',
-        'PASSWORD':'123',
-        'PORT':5432
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/'db.demo',
+        # 'HOST':'localhost',
+        # 'USER':'postgres',
+        # 'PASSWORD':'123',
+        # 'PORT':5432
 
     }
 }
@@ -130,3 +133,7 @@ STATICFILES_DIRS=['static']
 #media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#redirect
+LOGIN_REDIRECT_URL='Booklist'
+LOGOUT_REDIRECT_URL='login'
